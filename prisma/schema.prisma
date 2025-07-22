@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../lib/generated/prisma"
 }
 
 datasource db {
@@ -16,10 +16,12 @@ datasource db {
 
 model User {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  name         String
+  name         String?
   email        String   @unique
-  phone_number String
-  batch        String
+  password     String
+  phone_number String?
+  batch        String?
+  isVerified   Boolean  @default(false)
   teamId       String   @db.ObjectId
   role         Roles    @default(USER)
   team         Team     @relation(fields: [teamId], references: [id])
@@ -31,6 +33,7 @@ model Team {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   name       String
   collegeId  String    @db.ObjectId
+  isVerified Boolean   @default(false)
   ClubName   String?
   points     Int       @default(0)
   users      User[]
