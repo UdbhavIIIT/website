@@ -61,7 +61,7 @@ export default function TeamDashboard({ team, isLeader }: TeamDashboardProps) {
             } else {
                 alert(data.error || 'Failed to process request');
             }
-                } catch {
+        } catch {
         } finally {
             setLoading(false);
         }
@@ -141,15 +141,15 @@ export default function TeamDashboard({ team, isLeader }: TeamDashboardProps) {
             {/* Team Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-800">{team.memberCount}</div>
+                    <div className="text-2xl font-bold text-gray-800">{team.memberCount || 0}</div>
                     <div className="text-sm text-gray-600">Members</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-800">{team.maxMembers}</div>
+                    <div className="text-2xl font-bold text-gray-800">{team.maxMembers || 0}</div>
                     <div className="text-sm text-gray-600">Max Size</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-800">{team.maxMembers - team.memberCount}</div>
+                    <div className="text-2xl font-bold text-gray-800">{(team.maxMembers || 0) - (team.memberCount || 0)}</div>
                     <div className="text-sm text-gray-600">Slots Left</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
@@ -164,7 +164,7 @@ export default function TeamDashboard({ team, isLeader }: TeamDashboardProps) {
             <div className="mb-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">Team Members</h3>
                 <div className="space-y-3">
-                    {team.members.map((member) => (
+                    {team.members && team.members.length > 0 ? team.members.map((member) => (
                         <div key={member.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                             <div className="flex items-center space-x-4">
                                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold ${member.isTeamLeader ? 'bg-blue-600' : 'bg-gray-400'
@@ -192,7 +192,12 @@ export default function TeamDashboard({ team, isLeader }: TeamDashboardProps) {
                                 </div>
                             )}
                         </div>
-                    ))}
+                    )) : (
+                        <div className="text-center py-8 text-gray-500">
+                            <p className="text-lg">No team members yet</p>
+                            <p className="text-sm">Invite members using the team code above</p>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -202,8 +207,8 @@ export default function TeamDashboard({ team, isLeader }: TeamDashboardProps) {
                     onClick={handleLeaveTeam}
                     disabled={loading}
                     className={`px-6 py-2 rounded-md font-medium ${isLeader
-                            ? 'bg-red-600 hover:bg-red-700 text-white'
-                            : 'bg-yellow-600 hover:bg-yellow-700 text-white'
+                        ? 'bg-red-600 hover:bg-red-700 text-white'
+                        : 'bg-yellow-600 hover:bg-yellow-700 text-white'
                         } disabled:bg-gray-400 disabled:cursor-not-allowed`}
                 >
                     {loading ? 'Processing...' : (isLeader ? 'Delete Team' : 'Leave Team')}
