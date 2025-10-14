@@ -4,51 +4,52 @@ import { useState } from "react";
 
 const teamMembers = [
   {
-    name: "Alex Johnson",
-    role: "CEO & Founder",
-    image: "👨‍💼",
-    description: "Visionary leader with 10+ years in tech innovation.",
+    name: "Organizing Committee",
+    role: "Event Coordination",
+    image: "�",
+    description: "Dedicated team ensuring smooth execution of Udbhav 2025.",
   },
   {
-    name: "Sarah Chen",
-    role: "CTO",
-    image: "👩‍💻",
-    description: "Tech expert passionate about scalable solutions.",
+    name: "Technical Panel",
+    role: "Judging & Mentorship",
+    image: "�‍💻",
+    description: "Industry experts and professors evaluating innovations.",
   },
   {
-    name: "Michael Rodriguez",
-    role: "Head of Design",
-    image: "👨‍🎨",
-    description: "Creative designer focused on user experience.",
+    name: "Industry Partners",
+    role: "Sponsors & Mentors",
+    image: "�",
+    description: "Leading companies providing opportunities and guidance.",
   },
   {
-    name: "Emily Davis",
-    role: "Product Manager",
-    image: "👩‍💼",
-    description: "Strategic thinker driving product excellence.",
+    name: "Student Volunteers",
+    role: "Support Team",
+    image: "🎓",
+    description: "Passionate students making the event memorable for all.",
   },
 ];
 
 const milestones = [
   {
-    year: "2020",
-    title: "Founded",
-    description: "Started with a vision to transform digital experiences",
-  },
-  {
-    year: "2021",
-    title: "First Million Users",
-    description: "Reached our first major milestone in user adoption",
+    year: "2022",
+    title: "First Udbhav",
+    description:
+      "Inaugural inter-IIIT hackathon with 15 participating institutes",
   },
   {
     year: "2023",
-    title: "Global Expansion",
-    description: "Expanded operations to serve users worldwide",
+    title: "Expanded Reach",
+    description: "Grew to include 20 IIITs with industry partnerships",
+  },
+  {
+    year: "2024",
+    title: "National Recognition",
+    description: "Recognized as premier student hackathon in India",
   },
   {
     year: "2025",
-    title: "Innovation Leader",
-    description: "Recognized as a leading platform in creative technology",
+    title: "Complete Unity",
+    description: "All 26 IIITs participating with ₹5L+ prize pool",
   },
 ];
 
@@ -58,36 +59,36 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900 relative overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-400 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-purple-400 rounded-full filter blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-full h-full opacity-20">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            About Udhbav
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            About Udbhav 2025
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Learn more about our journey, mission, and the amazing team behind
-            the platform
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            The premier inter-IIIT hackathon bringing together the brightest
+            minds from all 26 IIITs across India
           </p>
-          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full"></div>
         </div>
 
         {/* Tab Navigation */}
         <div className="flex justify-center mb-12">
-          <div className="bg-white rounded-2xl p-2 shadow-lg">
+          <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-gray-700">
             <div className="flex space-x-2">
               {[
-                { id: "story", label: "Our Story", icon: "📖" },
+                { id: "story", label: "About Event", icon: "�" },
                 { id: "mission", label: "Mission", icon: "🎯" },
-                { id: "team", label: "Team", icon: "👥" },
-                { id: "timeline", label: "Timeline", icon: "⏰" },
+                { id: "team", label: "Organizers", icon: "👥" },
+                { id: "timeline", label: "Journey", icon: "⏰" },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -96,8 +97,8 @@ export function About() {
                     flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300
                     ${
                       activeTab === tab.id
-                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                        ? "bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg"
+                        : "text-gray-300 hover:text-white hover:bg-gray-700"
                     }
                   `}
                 >
@@ -115,11 +116,11 @@ export function About() {
           {activeTab === "story" && (
             <div className="animate-fade-in">
               <div className="max-w-4xl mx-auto">
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-gray-700">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
                     The Journey Begins
                   </h3>
-                  <div className="prose prose-lg text-gray-600 leading-relaxed">
+                  <div className="prose prose-lg text-gray-300 leading-relaxed">
                     <p className="mb-6">
                       Udhbav was born from a simple yet powerful idea: to create
                       a platform that empowers individuals and teams to bring

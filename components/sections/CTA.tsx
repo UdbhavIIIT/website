@@ -56,34 +56,34 @@ export function CTA() {
         <div className="text-center">
           {/* Main Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your Ideas?
+            Ready to Code the Future?
           </h2>
 
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of creators who are already building amazing things
-            with Udhbav. Start your journey today and unlock your creative
-            potential.
+            Join the biggest inter-IIIT hackathon and compete with the brightest
+            minds across India. Register now for Udbhav 2025 and turn your
+            innovative ideas into reality!
           </p>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                24/7
+                72H
               </div>
-              <div className="text-white/80">Support Available</div>
+              <div className="text-white/80">Non-Stop Coding</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                Free
+                ₹5L+
               </div>
-              <div className="text-white/80">Trial Period</div>
+              <div className="text-white/80">Prize Pool</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                ∞
+                26
               </div>
-              <div className="text-white/80">Possibilities</div>
+              <div className="text-white/80">IIITs Participating</div>
             </div>
           </div>
 
@@ -91,7 +91,7 @@ export function CTA() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <button className="group relative px-8 py-4 bg-white text-blue-600 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
               <span className="relative z-10 flex items-center">
-                Get Started Now
+                🚀 Register for Udbhav 2025
                 <svg
                   className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
                   fill="none"

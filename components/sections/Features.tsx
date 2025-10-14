@@ -4,45 +4,45 @@ import { useState } from "react";
 
 const features = [
   {
-    icon: "🚀",
-    title: "Lightning Fast",
+    icon: "�",
+    title: "72-Hour Marathon",
     description:
-      "Experience blazing-fast performance with our optimized infrastructure and cutting-edge technology.",
+      "Test your coding skills in an intense 72-hour non-stop hackathon experience with mentors and industry experts.",
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: "🔒",
-    title: "Secure & Private",
+    icon: "🏆",
+    title: "₹5L+ Prize Pool",
     description:
-      "Your data is protected with enterprise-grade security and privacy measures.",
+      "Compete for exciting prizes worth over 5 lakhs, including cash rewards, internships, and job opportunities.",
     color: "from-green-500 to-emerald-500",
   },
   {
-    icon: "🎨",
-    title: "Beautiful Design",
+    icon: "🤝",
+    title: "Inter-IIIT Network",
     description:
-      "Enjoy a stunning, intuitive interface designed for modern workflows and creativity.",
+      "Connect with brilliant minds from all 26 IIITs across India and build lasting professional relationships.",
     color: "from-purple-500 to-pink-500",
   },
   {
-    icon: "📱",
-    title: "Mobile First",
+    icon: "�",
+    title: "Industry Mentors",
     description:
-      "Access your work anywhere with our responsive, mobile-optimized platform.",
+      "Get guidance from top industry professionals and startup founders to refine your innovative ideas.",
     color: "from-orange-500 to-red-500",
   },
   {
-    icon: "⚡",
-    title: "Real-time Sync",
+    icon: "🎯",
+    title: "Problem Statements",
     description:
-      "Collaborate in real-time with automatic synchronization across all devices.",
+      "Work on real-world challenges from leading companies and contribute to meaningful solutions.",
     color: "from-yellow-500 to-orange-500",
   },
   {
-    icon: "🌍",
-    title: "Global Scale",
+    icon: "�",
+    title: "Career Opportunities",
     description:
-      "Built to scale globally with CDN distribution and worldwide availability.",
+      "Showcase your talent to potential employers with internship and job opportunities from partner companies.",
     color: "from-indigo-500 to-purple-500",
   },
 ];
@@ -51,9 +51,12 @@ export function Features() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
   return (
-    <section id="features" className="py-20 bg-white relative overflow-hidden">
+    <section
+      id="features"
+      className="py-20 bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900 relative overflow-hidden"
+    >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <pattern
             id="grid"
@@ -75,14 +78,14 @@ export function Features() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Powerful Features
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Why Join Udbhav?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the tools and capabilities that make Udhbav the perfect
-            platform for your creative journey
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Experience the ultimate inter-IIIT hackathon with exciting
+            opportunities, amazing prizes, and a chance to showcase your talent
           </p>
-          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full"></div>
         </div>
 
         {/* Features Grid */}
@@ -96,12 +99,12 @@ export function Features() {
             >
               <div
                 className={`
-                relative p-8 bg-white rounded-2xl shadow-lg border border-gray-100
+                relative p-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-700
                 transition-all duration-500 transform
                 ${
                   hoveredFeature === index
-                    ? "scale-105 shadow-2xl"
-                    : "hover:shadow-xl"
+                    ? "scale-105 shadow-2xl border-gray-600"
+                    : "hover:shadow-xl hover:border-gray-600"
                 }
               `}
               >
@@ -132,10 +135,10 @@ export function Features() {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
+                  <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
                     {feature.description}
                   </p>
                 </div>
