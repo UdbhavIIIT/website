@@ -10,7 +10,7 @@ export default async function Home() {
   const session = await auth();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
       <Navigation session={session} />
       <Hero />
       <Features />
