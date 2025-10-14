@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../lib/generated/prisma"
@@ -21,9 +15,11 @@ model User {
   password     String
   phone_number String?
   batch        String?
-  teamId       String   @db.ObjectId
+  teamId       String?  @db.ObjectId
   role         Roles    @default(USER)
-  team         Team     @relation(fields: [teamId], references: [id])
+  isTeamLeader Boolean  @default(false)
+  team         Team?    @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  createdTeams Team[]   @relation("TeamCreator")
   created_at   DateTime @default(now())
   updated_at   DateTime @updatedAt
 }
@@ -31,12 +27,17 @@ model User {
 model Team {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   name       String
-  collegeId  String    @db.ObjectId
+  teamCode   String    @unique
+  collegeId  String?   @db.ObjectId
   ClubName   String?
   points     Int       @default(0)
+  maxMembers Int       @default(5)
+  isActive   Boolean   @default(true)
   users      User[]
   project    Project[]
-  college    College   @relation(fields: [collegeId], references: [id])
+  creatorId  String    @db.ObjectId
+  creator    User      @relation("TeamCreator", fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  college    College?  @relation(fields: [collegeId], references: [id])
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
 }
