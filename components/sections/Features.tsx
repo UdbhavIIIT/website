@@ -4,45 +4,45 @@ import { useState } from "react";
 
 const features = [
   {
-    icon: "�",
-    title: "72-Hour Marathon",
+    icon: "⚡",
+    title: "India’s First Inter-IIIT Hackathon",
     description:
-      "Test your coding skills in an intense 72-hour non-stop hackathon experience with mentors and industry experts.",
+      "UDBHAV unites all IIITs across India for a groundbreaking national hackathon — a platform to showcase innovation, collaboration, and real-world problem-solving.",
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: "🏆",
-    title: "₹5L+ Prize Pool",
+    icon: "🏫",
+    title: "Pan-India IIIT Participation",
     description:
-      "Compete for exciting prizes worth over 5 lakhs, including cash rewards, internships, and job opportunities.",
+      "Join 1,000+ teams from 28 IIITs nationwide — connecting top tech talent from premier institutes specializing in CSE, ECE, and AI/DS.",
     color: "from-green-500 to-emerald-500",
   },
   {
-    icon: "🤝",
-    title: "Inter-IIIT Network",
+    icon: "💡",
+    title: "Three Exciting Rounds",
     description:
-      "Connect with brilliant minds from all 26 IIITs across India and build lasting professional relationships.",
+      "Compete through multiple hackathon rounds designed to test creativity, technical depth, and real-world impact — from ideation to implementation.",
     color: "from-purple-500 to-pink-500",
   },
   {
-    icon: "�",
-    title: "Industry Mentors",
+    icon: "🏆",
+    title: "Massive Scale & Recognition",
     description:
-      "Get guidance from top industry professionals and startup founders to refine your innovative ideas.",
+      "With 3,000+ expected participants and multi-lakh budgets inspired by flagship IIIT events like Aparoksha, Esya, and Aurora — UDBHAV promises national visibility.",
     color: "from-orange-500 to-red-500",
   },
   {
-    icon: "🎯",
-    title: "Problem Statements",
+    icon: "🤝",
+    title: "Industry & Alumni Collaboration",
     description:
-      "Work on real-world challenges from leading companies and contribute to meaningful solutions.",
+      "Interact with mentors, sponsors, and alumni from leading companies and startups, gaining guidance and career-defining connections.",
     color: "from-yellow-500 to-orange-500",
   },
   {
-    icon: "�",
-    title: "Career Opportunities",
+    icon: "🚀",
+    title: "Sponsorship & Opportunities",
     description:
-      "Showcase your talent to potential employers with internship and job opportunities from partner companies.",
+      "Partner companies gain brand visibility, workshops, speaker sessions, and talent access through exclusive sponsorship tiers from Silver to Title Partner.",
     color: "from-indigo-500 to-purple-500",
   },
 ];
@@ -124,7 +124,7 @@ export function Features() {
                   <div
                     className={`
                     inline-flex items-center justify-center w-16 h-16 rounded-2xl
-                    bg-gradient-to-r ${feature.color} text-white text-2xl
+                    bg-gradient-to-r ${feature.color} text-white text-4xl
                     transition-transform duration-500
                     ${hoveredFeature === index ? "rotate-12 scale-110" : ""}
                   `}
@@ -142,42 +142,12 @@ export function Features() {
                     {feature.description}
                   </p>
                 </div>
-
-                {/* Hover Effect Border */}
-                <div
-                  className={`
-                  absolute inset-0 rounded-2xl border-2 border-transparent
-                  bg-gradient-to-r ${feature.color} p-[2px]
-                  transition-opacity duration-500
-                  ${hoveredFeature === index ? "opacity-20" : "opacity-0"}
-                `}
-                >
-                  <div className="w-full h-full bg-white rounded-2xl"></div>
-                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <button className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
-            <span>Explore All Features</span>
-            <svg
-              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </button>
-        </div>
+        {/* Bottom CTA Removed */}
       </div>
     </section>
   );
