@@ -69,110 +69,22 @@ export function CTA() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                72H
+                7H
               </div>
               <div className="text-white/80">Non-Stop Coding</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                ₹5L+
+                ₹1.5L+
               </div>
               <div className="text-white/80">Prize Pool</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                26
+                28
               </div>
               <div className="text-white/80">IIITs Participating</div>
             </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <button className="group relative px-8 py-4 bg-white text-blue-600 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-              <span className="relative z-10 flex items-center">
-                🚀 Register for Udbhav 2025
-                <svg
-                  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-
-            <button className="group px-8 py-4 border-2 border-white/30 text-white font-bold rounded-xl transition-all duration-300 hover:border-white hover:bg-white/10 backdrop-blur-sm">
-              <span className="flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2 group-hover:animate-pulse"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Watch Tutorial
-              </span>
-            </button>
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="max-w-md mx-auto">
-            <h3 className="text-xl font-semibold text-white mb-4">
-              Stay Updated
-            </h3>
-            <form
-              onSubmit={handleSubscribe}
-              className="flex flex-col sm:flex-row gap-3"
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl transition-all duration-300 hover:bg-gray-100 hover:shadow-lg"
-              >
-                {isSubscribed ? (
-                  <span className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Subscribed!
-                  </span>
-                ) : (
-                  "Subscribe"
-                )}
-              </button>
-            </form>
-            {isSubscribed && (
-              <p className="mt-3 text-white/80 text-sm animate-fade-in">
-                Thanks for subscribing! You'll hear from us soon.
-              </p>
-            )}
           </div>
 
           {/* Trust Indicators */}
