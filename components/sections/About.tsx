@@ -4,52 +4,53 @@ import { useState } from "react";
 
 const teamMembers = [
   {
-    name: "Organizing Committee",
-    role: "Event Coordination",
-    image: "�",
-    description: "Dedicated team ensuring smooth execution of Udbhav 2025.",
+    name: "Sripathy Siddartha",
+    role: "Organizer",
+    image: "🏆",
+    description:
+      "Leads the overall end-to-end planning, organising and execution of Udbhav.",
   },
   {
-    name: "Technical Panel",
-    role: "Judging & Mentorship",
-    image: "�‍💻",
-    description: "Industry experts and professors evaluating innovations.",
+    name: "Sai Tej Ravi Ram",
+    role: "Program Director",
+    image: "🎬",
+    description:
+      "Manages the event's schedule, rounds, and technical flow across all stages.",
   },
   {
-    name: "Industry Partners",
-    role: "Sponsors & Mentors",
-    image: "�",
-    description: "Leading companies providing opportunities and guidance.",
+    name: "Ishaan Jha",
+    role: "Sponsorship Lead",
+    image: "🤝",
+    description:
+      "Heads the team for securing industry partnerships and sponsors",
   },
   {
-    name: "Student Volunteers",
-    role: "Support Team",
-    image: "🎓",
-    description: "Passionate students making the event memorable for all.",
+    name: "Siddharth Kancharla",
+    role: "Sponsorship Team",
+    image: "💼",
+    description:
+      "Works with the sponsorship lead to create valuable opportunities for participants",
   },
 ];
 
 const milestones = [
   {
-    year: "2022",
-    title: "First Udbhav",
+    year: "2025",
+    title: "Round 1",
     description:
-      "Inaugural inter-IIIT hackathon with 15 participating institutes",
-  },
-  {
-    year: "2023",
-    title: "Expanded Reach",
-    description: "Grew to include 20 IIITs with industry partnerships",
-  },
-  {
-    year: "2024",
-    title: "National Recognition",
-    description: "Recognized as premier student hackathon in India",
+      "Top four teams from each IIIT will be given certificates and cups, and will be qualified to Round 2",
   },
   {
     year: "2025",
-    title: "Complete Unity",
-    description: "All 26 IIITs participating with ₹5L+ prize pool",
+    title: "Round 2",
+    description:
+      "The top one team from each IIIT will advance to the final round",
+  },
+  {
+    year: "2025",
+    title: "Round 3",
+    description:
+      "Round 3 will happen offline under the supervision of the IIIT Sricity organising team",
   },
 ];
 
@@ -85,7 +86,7 @@ export function About() {
           <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-gray-700">
             <div className="flex space-x-2">
               {[
-                { id: "story", label: "About Event", icon: "�" },
+                { id: "story", label: "About Event", icon: " " },
                 { id: "mission", label: "Mission", icon: "🎯" },
                 { id: "team", label: "Organizers", icon: "👥" },
                 { id: "timeline", label: "Journey", icon: "⏰" },
@@ -122,24 +123,19 @@ export function About() {
                   </h3>
                   <div className="prose prose-lg text-gray-300 leading-relaxed">
                     <p className="mb-6">
-                      Udhbav was born from a simple yet powerful idea: to create
-                      a platform that empowers individuals and teams to bring
-                      their creative visions to life. Our founders recognized
-                      that traditional tools were holding back innovation, and
-                      set out to build something different.
+                      UDBHAV is India's first Inter-IIIT Hackathon, an open
+                      event designed to encompass all domains of the
+                      ever-growing IT world. It provides a platform for teams
+                      from different IIITs to select their preferred domains and
+                      problem statements, enabling them to showcase their skills
+                      to the world.
                     </p>
                     <p className="mb-6">
-                      Starting in a small garage in 2020, we've grown into a
-                      global platform serving millions of users worldwide. What
-                      began as a passion project has evolved into a
-                      comprehensive ecosystem that supports creativity,
-                      collaboration, and innovation at every level.
-                    </p>
-                    <p>
-                      Today, Udhbav stands as a testament to what's possible
-                      when technology meets human creativity. We're not just
-                      building tools; we're fostering a community of dreamers,
-                      makers, and innovators who are shaping the future.
+                      The Indian Institutes of Information Technology (IIITs)
+                      are premier institutions focused on future-ready education
+                      in fields like AI, IoT, Blockchain, and Data Science.
+                      Udbhav unites these highly technical institutes for a
+                      nationwide coding showdown
                     </p>
                   </div>
                 </div>
@@ -157,10 +153,10 @@ export function About() {
                     Our Mission
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    To democratize creativity and innovation by providing
-                    powerful, accessible tools that enable anyone to transform
-                    their ideas into reality, regardless of their technical
-                    background or resources.
+                    To unite students from all IIITs on a single platform,
+                    fostering innovation across all IT domains and empowering
+                    them to solve real-world challenges through a competitive,
+                    multi-stage hackathon.
                   </p>
                 </div>
                 <div className="bg-white rounded-3xl p-8 shadow-xl">
@@ -169,9 +165,10 @@ export function About() {
                     Our Vision
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    A world where creativity knows no bounds, where every
-                    individual has the tools and support they need to innovate,
-                    collaborate, and make a meaningful impact on society.
+                    To establish a premier, collaborative hackathon that
+                    showcases the exceptional technical prowess of IIIT students
+                    and cultivates a nationwide community of future technology
+                    leaders and innovators.
                   </p>
                 </div>
               </div>
