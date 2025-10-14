@@ -98,8 +98,8 @@ export default function TeamManagement() {
                             <button
                                 onClick={() => setActiveTab('create')}
                                 className={`flex-1 py-3 px-4 text-center font-medium rounded-l-lg border-2 ${activeTab === 'create'
-                                        ? 'bg-blue-600 text-white border-blue-600'
-                                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                                    ? 'bg-blue-600 text-white border-blue-600'
+                                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
                                     }`}
                             >
                                 Create Team
@@ -107,8 +107,8 @@ export default function TeamManagement() {
                             <button
                                 onClick={() => setActiveTab('join')}
                                 className={`flex-1 py-3 px-4 text-center font-medium rounded-r-lg border-2 border-l-0 ${activeTab === 'join'
-                                        ? 'bg-green-600 text-white border-green-600'
-                                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                                    ? 'bg-green-600 text-white border-green-600'
+                                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
                                     }`}
                             >
                                 Join Team
