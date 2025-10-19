@@ -8,8 +8,6 @@ import { domainToTag } from "./collegeMapping";
 declare module "next-auth" {
   interface User {
     role: string;
-    teamId?: string;
-    isTeamLeader?: boolean;
   }
 
   interface Session {
@@ -18,8 +16,6 @@ declare module "next-auth" {
       email: string;
       name: string;
       role: string;
-      teamId?: string;
-      isTeamLeader?: boolean;
     };
   }
 }
@@ -90,8 +86,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             email: user.email,
             role: user.role,
             name: user.name,
-            teamId: user.teamId || undefined,
-            isTeamLeader: user.isTeamLeader,
           };
         } catch (error) {
           console.error("Error in authorize:", error);
@@ -112,8 +106,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.email = user.email;
         token.role = user.role;
         token.name = user.name;
-        token.teamId = user.teamId;
-        token.isTeamLeader = user.isTeamLeader;
       }
       return token;
     },
@@ -122,8 +114,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.email = token.email as string;
       session.user.role = token.role as string;
       session.user.name = token.name as string;
-      session.user.teamId = token.teamId as string;
-      session.user.isTeamLeader = token.isTeamLeader as boolean;
       return session;
     },
   },
