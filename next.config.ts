@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    NEXT_PUBLIC_ALLOWED_IIIT_DOMAINS: process.env.ALLOWED_IIIT_DOMAINS,
+  },
 };
 
 export default nextConfig;

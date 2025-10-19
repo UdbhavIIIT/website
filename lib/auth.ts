@@ -7,22 +7,51 @@ import { compare } from "bcryptjs";
 declare module "next-auth" {
   interface User {
     role: string;
+    teamId?: string;
+    isTeamLeader?: boolean;
+  }
+
+  interface Session {
+    user: {
+      id: string;
+      email: string;
+      name: string;
+      role: string;
+      teamId?: string;
+      isTeamLeader?: boolean;
+    };
   }
 }
+const isValidIIITDomain = (domain: string): boolean => {
+  const lowerDomain = domain.toLowerCase();
+  const allowDomains = process.env.ALLOWED_IIIT_DOMAINS?.split(',').map(d => d.trim().toLowerCase()) || [];
+  return allowDomains.includes(lowerDomain);
+};
 
 const credentialsSchema = z.object({
-  email: z.email(),
+  email: z
+    .string()
+    .email("Invalid email format")
+    .refine((email) => {
+      const domain = email.split("@")[1];
+      return domain && isValidIIITDomain(domain);
+    }, {
+      message: "Email must be from an IIIT institution domain",
+    }),
   password: z.string().min(6).max(20),
 });
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  pages: {
+    signIn: "/auth/signin",
+  },
   providers: [
     Credentials({
       credentials: {
         email: {
           type: "email",
           label: "Email",
-          placeholder: "johndoe@gmail.com",
+          placeholder: "student@iiits.ac.in",
         },
         password: {
           type: "password",
@@ -34,7 +63,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
           const parsed = credentialsSchema.safeParse(credentials);
           if (!parsed.success) {
-            console.error("Invalid credentials format", parsed.error);
             return null;
           }
 
@@ -44,31 +72,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             where: { email: email.toLowerCase() },
           });
 
-          if (!user) {
-            console.error("User not found");
-            return null;
-          }
-          if (!user.password) {
-            console.log("User has no password set:", email);
+          if (!user || !user.password) {
             return null;
           }
 
           const isValid = await compare(password, user.password);
           if (!isValid) {
-            console.log("Invalid password for user:", email);
             return null;
           }
-
-          console.log("User authenticated successfully:", email);
 
           return {
             id: user.id,
             email: user.email,
             role: user.role,
             name: user.name,
+            teamId: user.teamId || undefined,
+            isTeamLeader: user.isTeamLeader,
           };
         } catch (error) {
-          console.error("Error during authentication:", error);
           return null;
         }
       },
@@ -76,17 +97,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   session: {
     strategy: "jwt",
-    updateAge: 24 * 60 * 60, // 24 hours
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60,
+    maxAge: 30 * 24 * 60 * 60,
   },
   callbacks: {
     async jwt({ token, user }) {
-      console.log("User: ", user);
       if (user) {
         token.id = user.id;
         token.email = user.email;
         token.role = user.role;
         token.name = user.name;
+        token.teamId = user.teamId;
+        token.isTeamLeader = user.isTeamLeader;
       }
       return token;
     },
@@ -95,6 +117,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.email = token.email as string;
       session.user.role = token.role as string;
       session.user.name = token.name as string;
+      session.user.teamId = token.teamId as string;
+      session.user.isTeamLeader = token.isTeamLeader as boolean;
       return session;
     },
   },
