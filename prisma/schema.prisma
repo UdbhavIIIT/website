@@ -10,7 +10,7 @@ datasource db {
 
 model User {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  name         String?
+  name         String
   email        String   @unique
   password     String
   phone_number String?
@@ -48,11 +48,12 @@ model Team {
 
 model College {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  tag          String   @unique
   name         String
-  mediaLink    String
-  logoLink     String
-  details      String
-  eventDetails String
+  mediaLink    String?
+  logoLink     String?
+  details      String?
+  eventDetails String?
   team         Team[]
   organizers   String[]
   User         User[]

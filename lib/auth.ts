@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { prisma } from "./prisma";
 import { compare } from "bcryptjs";
+import { domainToTag } from "./collegeMapping";
 
 declare module "next-auth" {
   interface User {
@@ -24,7 +25,7 @@ declare module "next-auth" {
 }
 const isValidIIITDomain = (domain: string): boolean => {
   const lowerDomain = domain.toLowerCase();
-  const allowDomains = process.env.ALLOWED_IIIT_DOMAINS?.split(',').map(d => d.trim().toLowerCase()) || [];
+  const allowDomains = Object.keys(domainToTag);
   return allowDomains.includes(lowerDomain);
 };
 
@@ -32,12 +33,15 @@ const credentialsSchema = z.object({
   email: z
     .string()
     .email("Invalid email format")
-    .refine((email) => {
-      const domain = email.split("@")[1];
-      return domain && isValidIIITDomain(domain);
-    }, {
-      message: "Email must be from an IIIT institution domain",
-    }),
+    .refine(
+      (email) => {
+        const domain = email.split("@")[1];
+        return domain && isValidIIITDomain(domain);
+      },
+      {
+        message: "Email must be from an IIIT institution domain",
+      }
+    ),
   password: z.string().min(6).max(20),
 });
 
@@ -90,6 +94,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             isTeamLeader: user.isTeamLeader,
           };
         } catch (error) {
+          console.error("Error in authorize:", error);
           return null;
         }
       },
