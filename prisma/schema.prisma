@@ -15,11 +15,13 @@ model User {
   password     String
   phone_number String?
   batch        String?
+  collegeId    String   @db.ObjectId
   isVerified   Boolean  @default(false)
-  teamId       String   @db.ObjectId
+  teamId       String?  @db.ObjectId
   role         Roles    @default(USER)
   isTeamLeader Boolean  @default(false)
   team         Team?    @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  college      College? @relation(fields: [collegeId], references: [id], onDelete: Cascade)
   createdTeams Team[]   @relation("TeamCreator")
   created_at   DateTime @default(now())
   updated_at   DateTime @updatedAt
@@ -28,6 +30,7 @@ model User {
 model Team {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   name       String
+  teamCode   String    @unique
   collegeId  String    @db.ObjectId
   isVerified Boolean   @default(false)
   ClubName   String?
@@ -52,6 +55,7 @@ model College {
   eventDetails String
   team         Team[]
   organizers   String[]
+  User         User[]
 }
 
 type Project {
