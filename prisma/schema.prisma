@@ -15,7 +15,8 @@ model User {
   password     String
   phone_number String?
   batch        String?
-  teamId       String?  @db.ObjectId
+  isVerified   Boolean  @default(false)
+  teamId       String   @db.ObjectId
   role         Roles    @default(USER)
   isTeamLeader Boolean  @default(false)
   team         Team?    @relation(fields: [teamId], references: [id], onDelete: SetNull)
@@ -27,8 +28,8 @@ model User {
 model Team {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   name       String
-  teamCode   String    @unique
-  collegeId  String?   @db.ObjectId
+  collegeId  String    @db.ObjectId
+  isVerified Boolean   @default(false)
   ClubName   String?
   points     Int       @default(0)
   maxMembers Int       @default(5)
