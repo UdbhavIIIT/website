@@ -16,8 +16,19 @@ interface TeamData {
   maxMembers: number;
   isActive: boolean;
   memberCount: number;
-  members: any[];
-  creator: any;
+  members: {
+    id: string;
+    name: string | null;
+    email: string;
+    isTeamLeader: boolean;
+    batch: string | null;
+    phone_number: string | null;
+  }[];
+  creator: {
+    id: string;
+    name: string | null;
+    email: string;
+  };
   createdAt: string;
 }
 

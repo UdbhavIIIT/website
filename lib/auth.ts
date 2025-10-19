@@ -3,12 +3,11 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { prisma } from "./prisma";
 import { compare } from "bcryptjs";
+import { domainToTag } from "./collegeMapping";
 
 declare module "next-auth" {
   interface User {
     role: string;
-    teamId?: string;
-    isTeamLeader?: boolean;
   }
 
   interface Session {
@@ -17,14 +16,12 @@ declare module "next-auth" {
       email: string;
       name: string;
       role: string;
-      teamId?: string;
-      isTeamLeader?: boolean;
     };
   }
 }
 const isValidIIITDomain = (domain: string): boolean => {
   const lowerDomain = domain.toLowerCase();
-  const allowDomains = process.env.ALLOWED_IIIT_DOMAINS?.split(',').map(d => d.trim().toLowerCase()) || [];
+  const allowDomains = Object.keys(domainToTag);
   return allowDomains.includes(lowerDomain);
 };
 
@@ -32,12 +29,15 @@ const credentialsSchema = z.object({
   email: z
     .string()
     .email("Invalid email format")
-    .refine((email) => {
-      const domain = email.split("@")[1];
-      return domain && isValidIIITDomain(domain);
-    }, {
-      message: "Email must be from an IIIT institution domain",
-    }),
+    .refine(
+      (email) => {
+        const domain = email.split("@")[1];
+        return domain && isValidIIITDomain(domain);
+      },
+      {
+        message: "Email must be from an IIIT institution domain",
+      }
+    ),
   password: z.string().min(6).max(20),
 });
 
@@ -86,10 +86,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             email: user.email,
             role: user.role,
             name: user.name,
-            teamId: user.teamId || undefined,
-            isTeamLeader: user.isTeamLeader,
           };
         } catch (error) {
+          console.error("Error in authorize:", error);
           return null;
         }
       },
@@ -107,8 +106,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.email = user.email;
         token.role = user.role;
         token.name = user.name;
-        token.teamId = user.teamId;
-        token.isTeamLeader = user.isTeamLeader;
       }
       return token;
     },
@@ -117,8 +114,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.email = token.email as string;
       session.user.role = token.role as string;
       session.user.name = token.name as string;
-      session.user.teamId = token.teamId as string;
-      session.user.isTeamLeader = token.isTeamLeader as boolean;
       return session;
     },
   },

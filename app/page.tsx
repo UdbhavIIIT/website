@@ -1,9 +1,11 @@
-import Link from 'next/link';
+import Link from "next/link";
 import { auth } from "@/lib/auth";
 import Navigation from "@/components/Navigation";
+import { getUserData } from "@/lib/actions";
 
 export default async function Home() {
   const session = await auth();
+  const userData = session?.user?.id ? await getUserData() : null;
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -15,7 +17,8 @@ export default async function Home() {
             Welcome to IIIT Portal
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Connect with your fellow IIIT students, create teams, and participate in amazing events and competitions.
+            Connect with your fellow IIIT students, create teams, and
+            participate in amazing events and competitions.
           </p>
 
           {session?.user ? (
@@ -25,17 +28,17 @@ export default async function Home() {
                   Hello, {session.user.name || session.user.email}!
                 </h2>
                 <p className="text-gray-600 mb-4">
-                  You're successfully logged in with your IIIT account.
+                  You&apos;re successfully logged in with your IIIT account.
                 </p>
 
-                {session.user.teamId ? (
+                {userData?.teamId ? (
                   <div className="space-y-3">
                     <div className="flex items-center justify-center space-x-2">
                       <span className="text-green-600">✓</span>
                       <span className="text-gray-700">
-                        You're part of a team
+                        You&apos;re part of a team
                       </span>
-                      {session.user.isTeamLeader && (
+                      {userData.isTeamLeader && (
                         <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
                           Leader
                         </span>
@@ -51,7 +54,7 @@ export default async function Home() {
                 ) : (
                   <div className="space-y-3">
                     <p className="text-gray-500 text-sm">
-                      You haven't joined or created a team yet
+                      You haven&apos;t joined or created a team yet
                     </p>
                     <Link
                       href="/teams"
@@ -65,9 +68,12 @@ export default async function Home() {
 
               <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Team Management</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                    Team Management
+                  </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    Create teams, invite members using team codes, and collaborate effectively.
+                    Create teams, invite members using team codes, and
+                    collaborate effectively.
                   </p>
                   <Link
                     href="/teams"
@@ -78,15 +84,20 @@ export default async function Home() {
                 </div>
 
                 <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Events</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                    Events
+                  </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    Participate in hackathons, competitions, and other exciting events.
+                    Participate in hackathons, competitions, and other exciting
+                    events.
                   </p>
                   <span className="text-gray-400 text-sm">Coming Soon</span>
                 </div>
 
                 <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Projects</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                    Projects
+                  </h3>
                   <p className="text-gray-600 text-sm mb-4">
                     Showcase your projects and collaborate with other students.
                   </p>
@@ -101,7 +112,8 @@ export default async function Home() {
                   Get Started
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Sign in with your IIIT email to access team management and events.
+                  Sign in with your IIIT email to access team management and
+                  events.
                 </p>
                 <div className="space-y-3">
                   <Link

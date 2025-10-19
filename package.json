@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:colleges": "node scripts/seed_colleges.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.12.0",

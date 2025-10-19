@@ -3,15 +3,40 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+interface TeamData {
+  id: string;
+  name: string;
+  teamCode: string;
+  clubName: string | null;
+  points: number;
+  maxMembers: number;
+  isActive: boolean;
+  memberCount: number;
+  members: {
+    id: string;
+    name: string | null;
+    email: string;
+    isTeamLeader: boolean;
+    batch: string | null;
+    phone_number: string | null;
+  }[];
+  creator: {
+    id: string;
+    name: string | null;
+    email: string;
+  };
+  createdAt: string;
+}
+
 interface CreateTeamFormProps {
-  onSuccess?: (team: any) => void;
+  onSuccess?: (team: TeamData) => void;
 }
 
 export default function CreateTeamForm({ onSuccess }: CreateTeamFormProps) {
   const [formData, setFormData] = useState({
     teamName: "",
     clubName: "",
-    maxMembers: 5,
+    maxMembers: 3,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -44,7 +69,7 @@ export default function CreateTeamForm({ onSuccess }: CreateTeamFormProps) {
       } else {
         setError(data.error || "Failed to create team");
       }
-    } catch (error) {
+    } catch {
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -127,7 +152,7 @@ export default function CreateTeamForm({ onSuccess }: CreateTeamFormProps) {
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+            {[2, 3].map((num) => (
               <option key={num} value={num}>
                 {num}
               </option>

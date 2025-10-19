@@ -92,6 +92,7 @@ export async function POST(request: NextRequest) {
       const team = await tx.team.create({
         data: {
           name: teamName,
+          collegeId: existingUser.collegeId,
           teamCode,
           ClubName: clubName,
           maxMembers,
@@ -123,6 +124,7 @@ export async function POST(request: NextRequest) {
         "Team created successfully! Share your team code with teammates.",
     });
   } catch (error) {
+    console.error("Error in team creation:", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
       { status: 500 }

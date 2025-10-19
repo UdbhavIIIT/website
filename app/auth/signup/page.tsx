@@ -100,8 +100,9 @@ export default function SignUp() {
 
             router.push("/");
             router.refresh();
-        } catch (error: any) {
-            setError(error.message || "An error occurred during registration");
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : "An error occurred during registration";
+            setError(message);
             setIsLoading(false);
         }
     };
