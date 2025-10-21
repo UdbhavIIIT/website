@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, Zap } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
+import { vt323 } from "@/lib/fonts";
 
 const Hero = () => {
   return (
@@ -32,7 +33,7 @@ const Hero = () => {
           </h1>
         </div>
 
-        <p className="font-retro text-2xl md:text-4xl mb-4 text-foreground">
+        <p className={`font-retro text-2xl md:text-4xl mb-4 text-foreground ${vt323.className}`}>
           &gt; CODE LIKE IT'S 1989_
         </p>
         
