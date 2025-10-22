@@ -29,9 +29,9 @@ const Schedule = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Vertical Timeline Line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-cyan via-neon-magenta to-neon-purple" />
-
+            {/* Vertical Timeline Line - Thin and cyan */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.1 bg-neon-cyan shadow-[0_0_6px_1px_rgba(0,255,255,0.7)] z-0" />
+            
             <div className="space-y-8">
               {scheduleItems.map((item, idx) => (
                 <div
@@ -41,13 +41,13 @@ const Schedule = () => {
                   } flex-col md:gap-8`}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 -translate-x-1/2 z-10">
+                  <div className="absolute left-0 md:left-1/2 -translate-x-1/2 z-20">
                     <div
-                      className={`w-4 h-4 rounded-full ${
+                      className={`w-5 h-5 rounded-full border-2 border-background ${
                         item.status === "complete"
-                          ? "bg-primary shadow-glow-cyan"
+                          ? "bg-primary shadow-[0_0_10px_3px_rgba(0,255,255,0.7)]"
                           : item.status === "active"
-                          ? "bg-secondary shadow-glow-magenta animate-pulse"
+                          ? "bg-secondary shadow-[0_0_10px_3px_rgba(255,0,255,0.7)] animate-pulse"
                           : "bg-muted"
                       }`}
                     />
@@ -66,7 +66,7 @@ const Schedule = () => {
                         item.status === "complete" ? "cyan" : "magenta"
                       } rounded-sm p-4 bg-background/90 backdrop-blur-sm`}
                     >
-                      <div className="flex items-center gap-2 mb-2 justify-start md:justify-${idx % 2 === 0 ? 'end' : 'start'}">
+                      <div className={`flex items-center gap-2 mb-2 justify-start ${idx % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                         <Clock className="w-4 h-4 text-accent" />
                         <span className="font-pixel text-xs text-accent uppercase">
                           {item.time}
